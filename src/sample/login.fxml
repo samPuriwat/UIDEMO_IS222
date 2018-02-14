@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: #212121;">
+         <children>
+            <ImageView fitHeight="188.0" fitWidth="163.0" layoutX="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/iconSchool.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="47.0" layoutY="156.0" text="School Management System" textFill="#eead16">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="369.0" text="\@CopyRight by samPuriwat" textFill="#eead16" />
+         </children>
+      </Pane>
+      <JFXTextField fx:id="username" focusColor="#4fc3f1" labelFloat="true" layoutX="385.0" layoutY="81.0" prefHeight="25.0" prefWidth="185.0" promptText="username">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="password" focusColor="#4fc3f1" labelFloat="true" layoutX="385.0" layoutY="132.0" prefHeight="25.0" prefWidth="185.0" promptText="password">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton fx:id="btnLogin" layoutX="385.0" layoutY="170.0" prefHeight="25.0" prefWidth="185.0" ripplerFill="#0629f2" style="-fx-background-color: #4fc3f1;" text="Login" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="346.0" layoutY="369.0" text="DB Status:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="dbStatus" layoutX="416.0" layoutY="369.0" prefHeight="17.0" prefWidth="170.0" textFill="#a80000">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="loginStatus" layoutX="346.0" layoutY="51.0" prefHeight="17.0" prefWidth="240.0" textFill="#eb2020" />
+   </children>
+</AnchorPane>
