@@ -3,11 +3,14 @@ package Admin;
 import dbUtil.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
@@ -32,6 +35,8 @@ public class adminController implements Initializable{
     private TableColumn<studentData, String> emailcolum;
     @FXML
     private TableColumn<studentData, String> dobcolum;
+    @FXML
+    private TextField searchTxt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,6 +74,37 @@ public class adminController implements Initializable{
 
         this.studentTable.setItems(null);
         this.studentTable.setItems(data);
+
+        //Filter Data in TableView
+        FilteredList<studentData> filteredData =
+                new FilteredList<>(data, e -> true);
+        searchTxt.setOnKeyReleased(e -> {
+            searchTxt.textProperty().addListener(
+                    (observable, oldValue, newValue) -> {
+                        filteredData.setPredicate(studentData -> {
+                            if (newValue == null || newValue.isEmpty()) {
+                                return true;
+                            }
+                            String lowerCaseFilter = newValue.toLowerCase();
+                            if (studentData.getID().contains(newValue)) {
+                                return true;
+                            } else if
+                                    (studentData.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                                return true;
+                            } else if
+                                    (studentData.getLastName().toLowerCase().contains(lowerCaseFilter)) {
+                                return true;
+                            }
+                            return false;
+                        });
+                    });
+            SortedList<studentData> sortedData =
+                    new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(
+                    studentTable.comparatorProperty());
+            studentTable.setItems(sortedData);
+
+        });
 
 
 
