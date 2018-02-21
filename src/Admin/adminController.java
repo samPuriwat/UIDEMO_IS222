@@ -1,5 +1,6 @@
 package Admin;
 
+import com.jfoenix.controls.JFXButton;
 import dbUtil.dbConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -15,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -37,6 +40,22 @@ public class adminController implements Initializable{
     private TableColumn<studentData, String> dobcolum;
     @FXML
     private TextField searchTxt;
+    @FXML
+    private TextField id;
+    @FXML
+    private TextField fname;
+    @FXML
+    private TextField lname;
+    @FXML
+    private TextField email;
+    @FXML
+    private DatePicker dob;
+    @FXML
+    private JFXButton btnAdd;
+    @FXML
+    private JFXButton btnEdit;
+    @FXML
+    private JFXButton btnDelete;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -109,5 +128,38 @@ public class adminController implements Initializable{
 
 
     }//loadStudentData
+    //clear form
+
+    @FXML
+    private  void clearFields(ActionEvent event){
+        this.id.setText("");
+        this.fname.setText("");
+        this.lname.setText("");
+        this.email.setText("");
+        this.dob.setValue(null);
+    }
+    //add Data
+    @FXML
+    private void addStudent(ActionEvent event) {
+        String sqlInsert = "insert into student(id,firstName,lastName,email,DOB) values (?,?,?,?,?)";
+
+        try {
+            Connection conn = dbConnection.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sqlInsert);
+            stmt.setString(1, this.id.getText());
+            stmt.setString(2, this.fname.getText());
+            stmt.setString(3, this.lname.getText());
+            stmt.setString(4, this.email.getText());
+            stmt.setString(5, this.dob.getEditor().getText());
+
+            stmt.execute();
+            stmt.close();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        loadStudentData(new ActionEvent());
+    }
 
 }//class

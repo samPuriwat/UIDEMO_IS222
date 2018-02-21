@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -36,6 +37,26 @@
                               <Font size="13.0" />
                            </font>
                         </TextField>
+                        <TextField fx:id="id" layoutX="48.0" layoutY="42.0" promptText="ID" />
+                        <TextField fx:id="fname" layoutX="48.0" layoutY="74.0" promptText="Fitst Name" />
+                        <TextField fx:id="lname" layoutX="48.0" layoutY="106.0" promptText="Last Name" />
+                        <TextField fx:id="email" layoutX="48.0" layoutY="138.0" promptText="Email" />
+                        <DatePicker fx:id="dob" layoutX="49.0" layoutY="173.0" prefHeight="25.0" prefWidth="148.0" promptText="Date of Birth" />
+                        <JFXButton fx:id="btnAdd" layoutX="49.0" layoutY="212.0" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: #458af9;" text="Add Student">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnEdit" layoutX="49.0" layoutY="244.0" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: #458af9;" text="Edit Student">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnDelete" layoutX="49.0" layoutY="276.0" prefHeight="25.0" prefWidth="147.0" style="-fx-background-color: #458af9;" text="Delete Student">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
             </content>
